@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Article;
-//use Dotenv\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Validator;
+
+//use Dotenv\Validator;
 
 
 class ArticleController extends Controller implements HasMiddleware

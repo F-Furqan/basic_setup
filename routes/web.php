@@ -1,10 +1,12 @@
 <?php
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\backend\ArticleController;
+use App\Http\Controllers\backend\PermissionController;
+use App\Http\Controllers\backend\ProfileController;
+use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backend\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +77,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
     Route::post('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
     Route::delete('/articles/delete', [ArticleController::class, 'destroy'])->name('articles.destroy');
+
+    /*Gallery*/
+    Route::get('gallery',[GalleryController::class,'index'])->name('gallery.index');
 
 });
 

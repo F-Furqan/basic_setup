@@ -268,6 +268,14 @@
                         </ul>
                     </div>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{route('gallery.index')}}">
+                        <i class="fa-solid fa-building"></i>
+                        <p>Gallery</p>
+                    </a>
+
+                </li>
             </ul>
         </div>
     </div>
