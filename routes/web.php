@@ -7,6 +7,7 @@ use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\GalleryController;
+use App\Http\Controllers\backend\GalleryFolderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-//    Permissions
+    //    Permissions
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
     Route::get('/permissions/view', [PermissionController::class, 'fetch'])->name('permissions.view');
     Route::get('/permissions/create', [PermissionController::class, 'create'])->name('permissions.create');
@@ -50,7 +51,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 
 
-//    Roles
+    //    Roles
 
     Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
     Route::get('/roles/view', [RoleController::class, 'fetch'])->name('roles.view');
@@ -69,7 +70,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/delete', [UserController::class, 'destroy'])->name('users.destroy');
 
-//    Article
+    //    Article
 
     Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
     Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
@@ -79,8 +80,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::delete('/articles/delete', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
     /*Gallery*/
-    Route::get('gallery',[GalleryController::class,'index'])->name('gallery.index');
-
+    Route::get('gallery', [GalleryController::class, 'index'])->name('gallery.index');
+    Route::get('folder/fetch', [GalleryFolderController::class, 'show'])->name('folder.fetch');
+    Route::post('folder/store', [GalleryFolderController::class, 'store'])->name('folder.store');
+    Route::delete('folder/{id}', [GalleryFolderController::class, 'destroy'])->name('folder.delete');
 });
 
-require __DIR__.'/auth.php';
+Route::get('test', [GalleryController::class, 'test'])->name('test');
+require __DIR__ . '/auth.php';
